@@ -1,11 +1,11 @@
-# capacitor-plugin-save-contact
+# capacitor-plugin-share-contact
 
 Plugin
 
 ## Install
 
 ```bash
-npm install capacitor-plugin-save-contact
+npm install capacitor-plugin-share-contact
 npx cap sync
 ```
 

@@ -1,10 +1,10 @@
 import { registerPlugin } from '@capacitor/core';
 
-import type { SaveContactPlugin } from './definitions';
+import type { ShareContactPlugin } from './definitions';
 
-const SaveContact = registerPlugin<SaveContactPlugin>('SaveContact', {
-  web: () => import('./web').then(m => new m.SaveContactWeb()),
+const ShareContact = registerPlugin<ShareContactPlugin>('ShareContact', {
+  web: () => import('./web').then(m => new m.ShareContactWeb()),
 });
 
 export * from './definitions';
-export { SaveContact };
+export { ShareContact };

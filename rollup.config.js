@@ -4,7 +4,7 @@ export default {
     {
       file: 'dist/plugin.js',
       format: 'iife',
-      name: 'capacitorSaveContact',
+      name: 'capacitorShareContact',
       globals: {
         '@capacitor/core': 'capacitorExports',
       },

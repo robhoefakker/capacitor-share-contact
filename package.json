@@ -1,5 +1,5 @@
 {
-  "name": "capacitor-plugin-save-contact",
+  "name": "capacitor-plugin-share-contact",
   "version": "0.0.1",
   "description": "Plugin",
   "main": "dist/plugin.cjs.js",
@@ -11,7 +11,7 @@
     "android/build.gradle",
     "dist/",
     "ios/Plugin/",
-    "CapacitorPluginSaveContact.podspec"
+    "CapacitorPluginShareContact.podspec"
   ],
   "author": "Rob Hoefakker",
   "license": "MIT",
@@ -37,7 +37,7 @@
     "eslint": "eslint . --ext ts",
     "prettier": "prettier \"**/*.{css,html,ts,js,java}\"",
     "swiftlint": "node-swiftlint",
-    "docgen": "docgen --api SaveContactPlugin --output-readme README.md --output-json dist/docs.json",
+    "docgen": "docgen --api ShareContactPlugin --output-readme README.md --output-json dist/docs.json",
     "build": "npm run clean && npm run docgen && tsc && rollup -c rollup.config.js",
     "clean": "rimraf ./dist",
     "watch": "tsc --watch",

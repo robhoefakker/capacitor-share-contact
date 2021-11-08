@@ -1,3 +1,3 @@
-export interface SaveContactPlugin {
+export interface ShareContactPlugin {
   echo(options: { value: string }): Promise<{ value: string }>;
 }

@@ -1,4 +1,4 @@
-package co.akker.plugins.savecontact;
+package co.akker.plugins.sharecontact;
 
 import com.getcapacitor.JSObject;
 import com.getcapacitor.Plugin;
@@ -6,10 +6,10 @@ import com.getcapacitor.PluginCall;
 import com.getcapacitor.PluginMethod;
 import com.getcapacitor.annotation.CapacitorPlugin;
 
-@CapacitorPlugin(name = "SaveContact")
-public class SaveContactPlugin extends Plugin {
+@CapacitorPlugin(name = "ShareContact")
+public class ShareContactPlugin extends Plugin {
 
-    private SaveContact implementation = new SaveContact();
+    private ShareContact implementation = new ShareContact();
 
     @PluginMethod
     public void echo(PluginCall call) {
