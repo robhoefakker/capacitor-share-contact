@@ -7,4 +7,16 @@ export class ShareContactWeb extends WebPlugin implements ShareContactPlugin {
     console.log('ECHO', options);
     return options;
   }
+  async share(filter: string): Promise<{ results: any[] }> {
+    console.log('filter', filter);
+    return {
+      results: [
+        {
+          firstName: 'Dummy',
+          lastName: 'Entry',
+          telephone: '123456',
+        },
+      ],
+    };
+  }
 }
