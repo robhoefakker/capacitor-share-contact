@@ -23,14 +23,12 @@ public class ShareContactPlugin: CAPPlugin, CNContactViewControllerDelegate, UIN
     }
     
     @objc func dismiss(sender: UIButton!){
-        print("dismiss now!")
         self.navigationController.dismiss(animated:true)
         }
     
   
     @objc func share(_ call: CAPPluginCall) {
 
-        print("test")
         let contactStore = CNContactStore()
      
         
@@ -71,8 +69,9 @@ public class ShareContactPlugin: CAPPlugin, CNContactViewControllerDelegate, UIN
                         let contactViewController = CNContactViewController(forUnknownContact: contact)
                         contactViewController.message = "Added via Dex Cards"
                         contactViewController.contactStore = contactStore
-                        contactViewController.allowsActions = true
-                        
+                        contactViewController.allowsActions = false
+                        let cancelItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(self.dismiss))
+                                contactViewController.navigationItem.leftBarButtonItem = cancelItem
                      //contactViewController.delegate = self
                         
                         DispatchQueue.main.async {
@@ -85,20 +84,18 @@ public class ShareContactPlugin: CAPPlugin, CNContactViewControllerDelegate, UIN
                            // navigationController.delegate = self
                             guard let bridge = self.bridge else { return }
                             let viewController = bridge.viewController!
-                            let navBar = UINavigationBar(frame: CGRect(x: 0, y: 0, width: viewController.view.frame.size.width, height: 44))
-
-                           
-                            
-                            self.navigationController.view.addSubview(navBar)
-                            let navItem = UINavigationItem(title: "")
-                            navBar.isTranslucent = true
-                            navBar.setBackgroundImage(UIImage(), for: .default)
-                            navBar.shadowImage = UIImage()
-                            let doneItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(self.dismiss))
-                            
-                            navItem.rightBarButtonItem = doneItem
-
-                            navBar.setItems([navItem], animated: false)
+//                            let navBar = UINavigationBar(frame: CGRect(x: 0, y: 0, width: 100, height: 44))
+//
+//                            self.navigationController.view.addSubview(navBar)
+//                            let navItem = UINavigationItem(title: "")
+//                            navBar.isTranslucent = true
+//                            navBar.setBackgroundImage(UIImage(), for: .default)
+//                            navBar.shadowImage = UIImage()
+//                            let doneItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(self.dismiss))
+//
+//                            navItem.leftBarButtonItem = doneItem
+//
+//                            navBar.setItems([navItem], animated: false)
                             viewController.present(self.navigationController, animated: true)
                             //navigationController.pushViewController(contactViewController, animated: false)
                                   
@@ -114,19 +111,22 @@ public class ShareContactPlugin: CAPPlugin, CNContactViewControllerDelegate, UIN
                        }
                        
                     } else {
-                        print("access denied")
                         call.reject("access denied")
                     }
                 }
        
     }
     
+    // NOT WORKING
     func contactViewController(viewController: CNContactViewController, didCompleteWithContact contact: CNContact?) {
+        print("completed with contact")
         viewController.dismiss(animated: true, completion: nil)
     }
     
-
+    // NOT WORKING
     func contactViewController(viewController: CNContactViewController, shouldPerformDefaultActionForContactProperty property: CNContactProperty) -> Bool {
+        print("completed with default")
+
         return true
     }
 }
